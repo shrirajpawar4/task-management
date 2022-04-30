@@ -2,8 +2,8 @@ import { } from '@chakra-ui/react'
 import React, {useState} from 'react'
 import AddTask from './AddTask'
 import Card from './Card'
-import { useDrag } from 'react-dnd'
-import tasks from '../tasks';
+// import { useDrag } from 'react-dnd'
+// import tasks from '../tasks';
 
 
 
@@ -18,11 +18,12 @@ export default function Task() {
    return(
        <>
        <AddTask save={saveTask} />
-       <Card title='Task 1' description='Task 1' />
        <div>
-       {taskList.map(function(title, description, taskObj){
+       {taskList.map(function(taskObj){
            return (
-               <Card title={taskObj.Title} description={taskObj.Description} />
+               <Card
+               description={taskObj.Description} 
+               />
            )
        })}
        </div>

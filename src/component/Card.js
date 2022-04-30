@@ -1,22 +1,19 @@
-import React from "react";
+import { Box } from '@chakra-ui/react';
 
-import {
-  Box
-} from "@chakra-ui/react";
+function Card({ description }) {
+  return (
+    <Box
+      mt="18"
+      ml="14"
+      p='4'
+      display={{ md: 'flex' }}
+      maxWidth="14rem"
+      borderWidth={1}
+      height={28}
+    >
+      <p>{description}</p>
+    </Box>
+  );
+}
 
-function Card() {
-    return (
-      <Box
-        mt='18'
-        ml='14'
-        display={{ md: "flex" }}
-        maxWidth="14rem"
-        borderWidth={1}
-        height={28}
-      >
-
-      </Box>
-    );
-  }
-  
-  export default Card;
+export default Card;

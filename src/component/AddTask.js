@@ -22,7 +22,8 @@ import {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
-    const [task, setTask] = useState('')
+    const [task, setTask] = useState('');
+    const [modal, setModal] = useState(true);
 
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -55,11 +56,6 @@ import {
             <ModalHeader>Add Task</ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={6}>
-              <FormControl>
-                <FormLabel>Title</FormLabel>
-                <Input placeholder='Title' value={title} onChange={handleChange} name='title' />
-              </FormControl>
-  
               <FormControl mt={4}>
                 <FormLabel>Description</FormLabel>
                 <Textarea placeholder='Description' value={description} onChange={handleChange} name='desc' />
@@ -70,7 +66,7 @@ import {
               <Button onClick={handleSave} colorScheme='orange' mr={3}>
                 Save
               </Button>
-              <Button onClick={onClose}>Cancel</Button>
+              
             </ModalFooter>
           </ModalContent>
         </Modal>
