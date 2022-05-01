@@ -1,6 +1,7 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Badge } from '@chakra-ui/react';
 
-function Card({ description }) {
+
+function Card({ description, status }) {
   return (
     <Box
       mt="18"
@@ -12,6 +13,9 @@ function Card({ description }) {
       height={28}
     >
       <p>{description}</p>
+
+      <p>{status}</p>
+      <Badge ml='2' h='6' px='4' variant='subtle' colorScheme='red'>{status}</Badge>
     </Box>
   );
 }

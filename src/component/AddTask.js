@@ -13,13 +13,14 @@ import {
     Button,
     Heading,
     Textarea,
-    useDisclosure 
+    useDisclosure,
+    Badge 
   } from '@chakra-ui/react'
 
 
   export default function AddTask({save}) {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [title, setTitle] = useState('');
+    const [status, setStatus] = useState('');
     const [description, setDescription] = useState('');
 
     const [task, setTask] = useState('');
@@ -28,8 +29,8 @@ import {
     const handleChange = (e) => {
         const {name, value} = e.target
 
-        if(name === 'title'){
-            setTitle(value);
+        if(name === 'status'){
+            setStatus(value);
         } else{
             setDescription(value);
         }
@@ -37,8 +38,8 @@ import {
 
     const handleSave = () => {
         let taskObj = {}
-        taskObj["Title"] = title
         taskObj["Description"] = description
+        taskObj["Status"] = status
         save(taskObj);  
     }
 
@@ -59,6 +60,11 @@ import {
               <FormControl mt={4}>
                 <FormLabel>Description</FormLabel>
                 <Textarea placeholder='Description' value={description} onChange={handleChange} name='desc' />
+              </FormControl>
+
+              <FormControl mt={4}>
+                <FormLabel>Status</FormLabel>
+                <Textarea placeholder='Description' value={status} onChange={handleChange} name='status' />
               </FormControl>
             </ModalBody>
   

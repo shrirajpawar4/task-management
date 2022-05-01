@@ -1,4 +1,4 @@
-import { } from '@chakra-ui/react'
+import { Badge} from '@chakra-ui/react'
 import React, {useState} from 'react'
 import AddTask from './AddTask'
 import Card from './Card'
@@ -21,9 +21,12 @@ export default function Task() {
        <div>
        {taskList.map(function(taskObj){
            return (
+               <>
                <Card
                description={taskObj.Description} 
+               status={taskObj.Status}
                />
+               </>
            )
        })}
        </div>
