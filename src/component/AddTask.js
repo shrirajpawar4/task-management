@@ -64,7 +64,7 @@ import {
 
               <FormControl mt={4}>
                 <FormLabel>Status</FormLabel>
-                <Textarea placeholder='Description' value={status} onChange={handleChange} name='status' />
+                <Input placeholder='Priority of task' value={status} onChange={handleChange} name='status' />
               </FormControl>
             </ModalBody>
   
