@@ -1,82 +1,93 @@
-import React, {useState} from 'react'
-import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    FormControl,
-    FormLabel,
-    Input,
-    Button,
-    Heading,
-    Textarea,
-    useDisclosure,
-    Badge 
-  } from '@chakra-ui/react'
+import { useState } from "react";
+import { Button, 
+         Textarea,
+         Modal,
+         ModalOverlay,
+         ModalContent,
+         ModalHeader,
+         ModalFooter,
+         ModalBody,
+         ModalCloseButton,
+        useDisclosure,  
+        Heading} from "@chakra-ui/react";
 
 
-  export default function AddTask({save}) {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const [status, setStatus] = useState('');
-    const [description, setDescription] = useState('');
+const AddTask = ({ save }) => {
+  const [description, setDescription] = useState("");
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [taskList, setTaskList] = useState([])
 
-    const [task, setTask] = useState('');
-    const [modal, setModal] = useState(true);
+  const handleChange = (e) => {
+    const {value} = e.target
+    console.log(value);
 
-    const handleChange = (e) => {
-        const {name, value} = e.target
+    // if (name === 'desc') {
+    //   setDescription(value);
+    // }
+  };
 
-        if(name === 'status'){
-            setStatus(value);
-        } else{
-            setDescription(value);
-        }
-    }
-
-    const handleSave = () => {
-        let taskObj = {}
+  const handleSave = (e) => {
+    // handleAdd(value);
+    // setValue("");
+    let taskObj = {}
         taskObj["Description"] = description
-        taskObj["Status"] = status
-        save(taskObj);  
-    }
+        save(taskObj); 
+  };
 
-    return (
-      <>
-          <Heading padding='6' >Task Managment</Heading>
-          <Button ml='40' onClick={onOpen} colorScheme='orange'>Add Project</Button>
-  
-          <Modal
-          isOpen={isOpen}
-          onClose={onClose}
+  return (
+    <>
+    <Heading as='h1' size='xl' margin='16'>Task Management App</Heading>
+    <Button 
+    bg='orange.300' 
+    size="lg"
+    shadow="md" 
+    marginLeft='20'
+    _hover={{ bg: 'orange.600'}}
+    onClick={onOpen}>
+    Add Task
+    </Button>
+
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent>
+      <ModalHeader>Add Task</ModalHeader>
+      <ModalCloseButton />
+      <ModalBody>
+      <Textarea
+        name="desc"
+        value={description}
+        onChange={(e) => {
+          console.log(e.target.value)
+          setDescription(e.target.value)
+        }}
+        placeholder="Task Description"
+        size="lg"
+        shadow="md"
+        border="1px"
+        borderColor="gray.300"
+        borderRadius="15px"
+        mr={4}
+        my={3}
+        p={2}
+      />
+      </ModalBody>
+
+      <ModalFooter m="auto">
+        <Button
+          color="white"
+          bg='orange.300'
+          size="lg"
+          shadow="md"
+          _hover={{ bg: 'orange.600'}}
+          onClick={handleSave}
         >
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Add Task</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody pb={6}>
-              <FormControl mt={4}>
-                <FormLabel>Description</FormLabel>
-                <Textarea placeholder='Description' value={description} onChange={handleChange} name='desc' />
-              </FormControl>
+          Save
+        </Button>
+      </ModalFooter>
+      </ModalContent>
+    </Modal>
+    </>  
+  );
+};
 
-              <FormControl mt={4}>
-                <FormLabel>Status</FormLabel>
-                <Input placeholder='Priority of task' value={status} onChange={handleChange} name='status' />
-              </FormControl>
-            </ModalBody>
-  
-            <ModalFooter>
-              <Button onClick={handleSave} colorScheme='orange' mr={3}>
-                Save
-              </Button>
-              
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </>
-    )
-}
- 
+export default AddTask;
