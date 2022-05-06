@@ -6,7 +6,7 @@
 
 // import { extendTheme } from '@chakra-ui/react';
 
- import Task from './component/Task';
+// import Task from './component/Task';
 // import AddTask from './component/AddTask';
 // // import AddTask from './component/AddTask';
 
@@ -23,41 +23,30 @@
 
 // import TodoList from "./components/TodoList";
 import { useState } from "react";
-import { v1 as v1id } from "uuid";
-// import Footer from "./Footer";
-import { Box, useToast } from "@chakra-ui/react";
-import AddTask from "./component/AddTask";
+import { Box } from "@chakra-ui/react";
+import AddTasks from "./component/AddTasks";
+import Task from './component/Task';
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-  const toast = useToast();
+  const [tasks, setTasks] = useState([
+    {
+      key: 1,
+      description: 'Task 1'
+  },
+  {
+      key: 1,
+      description: 'Task 2'
+  },
+  ]);
 
-  const handleCreate = (value) => {
-    if (value !== "") {
-      setTasks([...tasks, { id: v1id(), value }]);
-      toast({
-        position: "bottom-left",
-        title: "Success",
-        description: "Task Created!",
-        status: "success",
-        duration: 9000,
-        isClosable: true,
-      });
-    } else {
-      toast({
-        position: "bottom",
-        title: "Something's Wrong",
-        description: "Please enter some value!",
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-      });
-    }
+  const handleCreate = ({ description }) => {
+      setTasks([...tasks, { description: description, }]);
   };
+
 
   return (
     <Box h="100%" className="App">
-      <AddTask handleCreate={handleCreate} />
+      <AddTasks handleCreate={handleCreate} tasks={tasks} />
       <Task tasks={tasks} /> 
     </Box>
   );
