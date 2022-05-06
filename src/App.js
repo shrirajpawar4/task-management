@@ -7,7 +7,7 @@
 // import { extendTheme } from '@chakra-ui/react';
 
 // import Task from './component/Task';
-// import AddTask from './component/AddTask';
+ //import AddTask from './component/AddTask';
 // // import AddTask from './component/AddTask';
 
 
@@ -39,15 +39,17 @@ function App() {
   },
   ]);
 
-  const handleCreate = ({ description }) => {
-      setTasks([...tasks, { description: description, }]);
+  const onSave = ({ description }) => {
+      setTasks([
+        { description: description }, ...tasks,
+      ]);
   };
 
 
   return (
     <Box h="100%" className="App">
-      <AddTasks handleCreate={handleCreate} tasks={tasks} />
-      <Task tasks={tasks} /> 
+      <AddTasks onSave={onSave} />
+      {/* <Task tasks={tasks} />  */}
     </Box>
   );
 }

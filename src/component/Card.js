@@ -1,7 +1,8 @@
 import { Box } from '@chakra-ui/react';
+import AddTask from './AddTask';
 
 
-function Card({ description}) {
+function Card({ description }) {
   return (
     <Box
       mt="18"
@@ -12,7 +13,7 @@ function Card({ description}) {
       borderWidth={1}
       height={28}
     >
-    <h1>{description}</h1>
+    <h2>{description}</h2>
     </Box>
   );
 }

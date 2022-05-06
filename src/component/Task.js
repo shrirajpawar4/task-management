@@ -39,9 +39,9 @@ const Task = (tasks) => {
   return (
     <>
       {
-      tasks.map((task) => {
+      tasks.map((task) => (
         <AddTasks task={task} />
-      })
+      ))
     }
     </>
   )

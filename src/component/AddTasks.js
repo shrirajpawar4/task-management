@@ -19,11 +19,11 @@ const AddTasks = ({task, onSave}) => {
         e.preventDefault();
         onSave({ description: description });
 
-        setDescription("");
+        setDescription(description);
     }
 
     return(
-        <>
+    <>
     <Heading as='h1' size='xl' margin='16'>Task Management App</Heading>
     <Button 
     bg='orange.300' 
@@ -44,10 +44,6 @@ const AddTasks = ({task, onSave}) => {
       <Textarea
         name="desc"
         value={description}
-        // onChange={(e) => {
-        //   console.log(e.target.value)
-        //   setDescription(e.target.value)
-        // }}
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Task Description"
         size="lg"
@@ -75,8 +71,8 @@ const AddTasks = ({task, onSave}) => {
       </ModalFooter>
       </ModalContent>
     </Modal>
-    </>  
-    )
+  </>  
+  )
 }
 
 export default AddTasks;

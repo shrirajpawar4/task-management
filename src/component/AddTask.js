@@ -12,7 +12,7 @@
 //         Heading} from "@chakra-ui/react";
 
 
-// const AddTask = ({ save ,setTasks}) => {
+// const AddTask = ({ onSave ,setTasks}) => {
 //   const [description, setDescription] = useState("");
 //   const { isOpen, onOpen, onClose } = useDisclosure();
 //   const [taskList, setTaskList] = useState([])
@@ -29,10 +29,14 @@
 //   const handleSave = (e) => {
 //     // handleAdd(value);
 //     // setValue("");
-//     setTasks((prevtask)=>[...prevtask,{Description:description}])
+//      // setTasks((prevtask)=>[...prevtask,{Description:description}])
 //     // let taskObj = {}
 //     //     taskObj["Description"] = description
 //     //     save(taskObj); 
+//     e.preventDefault();
+//         onSave({ description: description });
+
+//          setDescription(description);
 //   };
 
 //   return (
